@@ -1,16 +1,15 @@
 using UnityEngine;
 
+/// <summary>
+/// 키보드 마우스 입력 관련 매니저
+/// </summary>
 public class InputManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    /// <summary>
+    ///  초기화용 메서드
+    /// </summary>
+    public void Init()
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
