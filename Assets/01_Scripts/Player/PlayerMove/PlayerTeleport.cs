@@ -29,6 +29,9 @@ public class PlayerTeleport : MonoBehaviour
 				}
 		}
 
+		//TODO 벡터 입력 방식 수정 필요. 현재 Move에서 verticalIDir 받아와야 함.
+
+
 		/// <summary>
 		/// 텔레포트, 강제이동 실행 매서드
 		/// </summary>
