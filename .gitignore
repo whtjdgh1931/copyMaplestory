@@ -104,3 +104,6 @@ InitTestScene*.unity*
 
 # Auto-generated cache in Assets folder
 /[Aa]ssets/[Ss]ceneDependencyCache*
+
+Assets/99_Assets/Google Sheets to Unity/Resources/GSTU_Config.asset
+Assets/99_Assets/Google Sheets to Unity/Resources/GSTU_Config.asset
