@@ -65,19 +65,23 @@ public class InputManager : MonoBehaviour
 
     public void OnJump()
     {
-        Vector2 dirVector = _player.PlayerMove.MoveVector;
-        Vector2Int dirVectorInt = Vector2Int.zero;
-        if(dirVector.x != 0f)
-        {
-						dirVectorInt.x = dirVector.x > 0f ? 1 : -1;
-        }
-        
-        if(dirVector.y != 0f)
-        {
-            dirVectorInt.y = dirVector.y > 0f ? 1 : -1;
-        }
-        
-        _player.PlayerTeleport.Teleport(dirVectorInt,10f,45f,2f);
-    }
+				#region teleport
+				//  Vector2 dirVector = _player.PlayerMove.MoveVector;
+				//  Vector2Int dirVectorInt = Vector2Int.zero;
+				//  if(dirVector.x != 0f)
+				//  {
+				//dirVectorInt.x = dirVector.x > 0f ? 1 : -1;
+				//  }
+
+				//  if(dirVector.y != 0f)
+				//  {
+				//      dirVectorInt.y = dirVector.y > 0f ? 1 : -1;
+				//  }
+
+				//  _player.PlayerTeleport.Teleport(dirVectorInt,10f,45f,2f);
+				#endregion
+				_player.PlayerMove.Jump();
+
+		}
 
 }

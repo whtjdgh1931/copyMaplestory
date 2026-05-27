@@ -1872,9 +1872,10 @@ GameObject:
   - component: {fileID: 1958337122}
   - component: {fileID: 1958337124}
   - component: {fileID: 1958337125}
+  - component: {fileID: 1958337126}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1949,12 +1950,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMove
   _rb: {fileID: 1958337121}
+  _playerCollider: {fileID: 1958337126}
   _moveVector: {x: 0, y: 0}
   _verticalDirection: 0
   _currentPosition: {x: 0, y: 0}
+  _isRight: 0
   _moveSpeed: 10
-  _jumpPower: 10
-  _jumpCount: 2
+  _jumpCnt: 2
+  _currentJumpCnt: 0
+  _normalJumpPower: 10
+  _highJumpPower: 50
+  _doubleJumpForwardPower: 30
+  _doubleJumpUpPower: 5
+  _downJumpSeconds: 0.2
+  _airControlFloat: 0.2
+  _isDownJumping: 0
 --- !u!114 &1958337125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1968,6 +1978,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerTeleport
   _rb: {fileID: 1958337121}
+--- !u!61 &1958337126
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958337119}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1962415355
 GameObject:
   m_ObjectHideFlags: 0
@@ -1978,9 +2034,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1962415356}
   - component: {fileID: 1962415357}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
