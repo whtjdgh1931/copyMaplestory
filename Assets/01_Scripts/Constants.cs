@@ -4,6 +4,8 @@ public static class Constants
 {
 		#region float
 		public const float FLOAT_TeleportMinRange = 0.5f;
+
+		public const float FLOAT_CheckFloat = 0.1f;
 		#endregion
 
 		#region tag
@@ -13,5 +15,12 @@ public static class Constants
 		/// </summary>
 		public const string TAG_Ground = "Ground";
 
+		public const string TAG_Player = "Player";
+
+		#endregion
+
+		#region layer
+		public const int LAYER_Ground = 3;
+		public const int LAYER_Player = 7;
 		#endregion
 }
