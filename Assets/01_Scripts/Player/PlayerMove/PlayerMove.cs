@@ -127,6 +127,11 @@ public class PlayerMove : MonoBehaviour
 		/// <param name="moveVector"></param>
 		public void Move(Vector2 moveVector)
     {
+        if(moveVector.magnitude > 1)
+        {
+            moveVector.Normalize();
+        }
+
 
         //바라보는 방향 저장
         if(Mathf.Abs(moveVector.x)> Constants.FLOAT_CheckFloat)

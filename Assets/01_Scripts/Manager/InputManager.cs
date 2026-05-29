@@ -12,10 +12,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] private PlayerInput _inputManager;
     [SerializeField] private Player _player;
 
-    /// <summary>
-    /// 벡터 체크를 위한 플롯값
-    /// </summary>
-		[SerializeField] private float _checkfloat;
+	
 
 		/// <summary>
 		///  초기화용 메서드
@@ -27,7 +24,6 @@ public class InputManager : MonoBehaviour
         {
             _inputManager = GetComponent<PlayerInput>();
         }
-        _player = GameManager.Instance.Player;
     }
 
     public void OnMove(InputValue inputValue)
@@ -35,7 +31,7 @@ public class InputManager : MonoBehaviour
 				Vector2 input = inputValue.Get<Vector2>();
 				Vector2 currentMove = _player.PlayerMove.MoveVector;
 
-				if (Mathf.Abs(input.x) > _checkfloat)
+				if (Mathf.Abs(input.x) > Constants.FLOAT_CheckFloat)
 				{
 						//좌우 이동 
 						currentMove.x = input.x > 0 ? 1f : -1f;
