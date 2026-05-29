@@ -28,18 +28,20 @@ public static class Constants
 		//공통,Sheet 이름
 		public const string ID = "ID";
 		public const string Name = "Name";
+		public const string FistRow = "1";	
+
 
 		public const string PlayerSheet = "Player";
 		public const string MonsterSheet = "Monster";
 		public const string ItemSheet = "Item";
 
-		//Player
+	//Player
+	public const string Player_MoveSpeed = "_moveSpeed";
+
+        //Monster
+
+    //Item
 
 
-		//Monster
-
-		//Item
-
-
-		#endregion
+    #endregion
 }

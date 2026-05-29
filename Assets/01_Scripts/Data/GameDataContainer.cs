@@ -1,5 +1,5 @@
 ﻿using System;
-using Unity.Collections;
+
 
 /// <summary>
 /// 임시 몬스터 데이터 형식
@@ -7,7 +7,7 @@ using Unity.Collections;
 [Serializable]
 public class MonsterData
 {
-		public string id;
+		public int id;
 		public string name;
 		public float hp;
 		public float atk;
@@ -38,7 +38,7 @@ public class PlayerMoveData
 		/// <summary>
 		/// 이동 속도
 		/// </summary>
-		public float MoveSpeed;
+		[SheetColumn(Constants.Player_MoveSpeed)] public float MoveSpeed;
 
 		#endregion
 

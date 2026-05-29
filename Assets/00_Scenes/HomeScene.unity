@@ -310,6 +310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   _mapManager: {fileID: 547837128}
   _inputManager: {fileID: 547837121}
+  _dataManager: {fileID: 547837123}
   _player: {fileID: 1958337122}
 --- !u!114 &547837121
 MonoBehaviour:
@@ -351,7 +352,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DataManager
   _sheetID: 16saxgsR8XVSR3Trhj2henSEgzQm5NXoKzR6_R5191Wo
-  _sheetName: MainData
 --- !u!114 &547837124
 MonoBehaviour:
   m_ObjectHideFlags: 0
