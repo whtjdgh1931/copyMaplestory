@@ -23,4 +23,23 @@ public static class Constants
 		public const int LAYER_Ground = 3;
 		public const int LAYER_Player = 7;
 		#endregion
+
+		#region SheetName
+		//공통,Sheet 이름
+		public const string ID = "ID";
+		public const string Name = "Name";
+
+		public const string PlayerSheet = "Player";
+		public const string MonsterSheet = "Monster";
+		public const string ItemSheet = "Item";
+
+		//Player
+
+
+		//Monster
+
+		//Item
+
+
+		#endregion
 }

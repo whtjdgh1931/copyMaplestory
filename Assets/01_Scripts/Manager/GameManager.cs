@@ -40,7 +40,15 @@ return _instance;
     private InputManager _inputManager;
     public InputManager InputManager=>_inputManager;
 
-		[SerializeField]
+    [SerializeField]
+		/// <summary>
+		/// 데이터 관리 매니저
+		/// </summary>
+		private DataManager _dataManager;
+    public DataManager DataManager => _dataManager; 
+    
+
+    [SerializeField]
 		/// <summary>
 		/// 플레이어
 		/// </summary>
@@ -91,6 +99,15 @@ return _instance;
             }
         }
 
+        if( _dataManager == null)
+        {
+            _dataManager = GetComponent<DataManager>();
+            if (_dataManager == null)
+            {
+                _dataManager = _instance.gameObject.AddComponent<DataManager>();
+            }
+        }
+
         //플레이어 검사
         if(_player == null)
         {
@@ -110,6 +127,9 @@ return _instance;
             return;
         }
 
+        //싱글톤 객체 유지
+        DontDestroyOnLoad(this.gameObject);
+
         //맵 매니저 초기화
         _mapManager.Initialize();
 
@@ -117,9 +137,11 @@ return _instance;
         //인풋 매니저 초기화
         _inputManager.Initialize();
 
+        //데이터 매니저 초기화
+        _dataManager.Initialize();
 
-        //플레이어 초기화
-        _player.Initialize();
+				//플레이어 초기화
+				_player.Initialize();
 
         _isInit = true;
     }
