@@ -1,4 +1,5 @@
-﻿using Unity.VisualScripting;
+﻿using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.InputSystem;
@@ -13,9 +14,14 @@ public class InputManager : MonoBehaviour
     [SerializeField] private Player _player;
 
     /// <summary>
+    /// 이동 관련 인풋 발생 시 발행
+    /// </summary>
+    public event Action<Vector2> OnMoveInput;
+
+    /// <summary>
     /// 벡터 체크를 위한 플롯값
     /// </summary>
-		[SerializeField] private float _checkfloat;
+    [SerializeField] private float _checkfloat;
 
 		/// <summary>
 		///  초기화용 메서드
@@ -33,20 +39,9 @@ public class InputManager : MonoBehaviour
     public void OnMove(InputValue inputValue)
     {
 				Vector2 input = inputValue.Get<Vector2>();
-				Vector2 currentMove = _player.PlayerMove.MoveVector;
-
-				if (Mathf.Abs(input.x) > _checkfloat)
-				{
-						//좌우 이동 
-						currentMove.x = input.x > 0 ? 1f : -1f;
-				}
-				else
-				{
-						//입력 없으면 정지
-						currentMove.x = 0f;
-				}
-
-				_player.PlayerMove.MoveVector = currentMove;
+		_player.Move(input);
+				
+				
 		}
 
     public void OnUpDown(InputValue inputValue)
@@ -65,22 +60,22 @@ public class InputManager : MonoBehaviour
 
     public void OnJump()
     {
-				#region teleport
-				//  Vector2 dirVector = _player.PlayerMove.MoveVector;
-				//  Vector2Int dirVectorInt = Vector2Int.zero;
-				//  if(dirVector.x != 0f)
-				//  {
-				//dirVectorInt.x = dirVector.x > 0f ? 1 : -1;
-				//  }
+		#region teleport
+		Vector2 dirVector = _player.PlayerMove.MoveVector;
+		Vector2Int dirVectorInt = Vector2Int.zero;
+		if (dirVector.x != 0f)
+		{
+			dirVectorInt.x = dirVector.x > 0f ? 1 : -1;
+		}
 
-				//  if(dirVector.y != 0f)
-				//  {
-				//      dirVectorInt.y = dirVector.y > 0f ? 1 : -1;
-				//  }
+		if (dirVector.y != 0f)
+		{
+			dirVectorInt.y = dirVector.y > 0f ? 1 : -1;
+		}
 
-				//  _player.PlayerTeleport.Teleport(dirVectorInt,10f,45f,2f);
-				#endregion
-				_player.PlayerMove.Jump();
+		_player.PlayerTeleport.Teleport(dirVectorInt, 10f, 45f, 2f);
+		#endregion
+		//_player.PlayerMove.Jump();
 
 		}
 

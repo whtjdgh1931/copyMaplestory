@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.Windows;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 /// <summary>
 /// 기본 플레이어 부모 클래스
@@ -16,6 +19,8 @@ public class Player : MonoBehaviour
     /// </summary>
     [SerializeField] private PlayerTeleport _playerTeleport;
     public PlayerTeleport PlayerTeleport => _playerTeleport;
+
+ 
 
     /// <summary>
     /// 컴포넌트 체크 메서드
@@ -50,5 +55,16 @@ public class Player : MonoBehaviour
 
 
     }
+
+    public void Move(Vector2 moveVector)
+    {
+        _playerMove.InputMoveVector(moveVector);
+
+       
+
+
+    }
+
+
 
 }

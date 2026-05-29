@@ -112,6 +112,13 @@ public class PlayerMove : MonoBehaviour
         }
 
         _currentPosition = _rb.position;
+
+        GameManager.Instance.DataManager.OnAllDataLoaded += CALLBACK_OnAllDataLoaded;
+
+        if(GameManager.Instance.DataManager.CachedPlayerData.MoveSpeed >0)
+        {
+            CALLBACK_OnAllDataLoaded();
+        }
     }
 
 		public void Update()
@@ -119,6 +126,21 @@ public class PlayerMove : MonoBehaviour
         CheckGround();
         Move(_moveVector);
 		}
+
+    public void InputMoveVector(Vector2 moveVector)
+    {
+        if (Mathf.Abs(moveVector.x) > Constants.FLOAT_CheckFloat)
+        {
+            //좌우 이동 
+            _moveVector.x = moveVector.x > 0 ? 1f : -1f;
+        }
+        else
+        {
+            //입력 없으면 정지
+            _moveVector.x = 0f;
+        }
+       
+    }
 
 
 		/// <summary>
@@ -259,5 +281,23 @@ public class PlayerMove : MonoBehaviour
     {
         _currentPosition = syncVector;
         _rb.position = syncVector;
+    }
+
+    public void ReturnToPool()
+    {
+        GameManager.Instance.DataManager.OnAllDataLoaded -= CALLBACK_OnAllDataLoaded;
+    }
+
+
+    /// <summary>
+    /// 데이터 완료 시 실행할 매서드
+    /// </summary>
+    public void CALLBACK_OnAllDataLoaded()
+    {
+        PlayerMoveData data = GameManager.Instance.DataManager.CachedPlayerData;
+
+        DataBinder.Bind(data, this);
+
+        Debug.Log("Data Bind");
     }
 }
